@@ -1,47 +1,28 @@
 <?php
 
-/**
-**
-**  BY iCODEART
-**
-**********************************************************************
-**                      REDES SOCIALES                            ****
-**********************************************************************
-**                                                                ****
-** FACEBOOK: https://www.facebook.com/icodeart                    ****
-** TWIITER: https://twitter.com/icodeart                          ****
-** YOUTUBE: https://www.youtube.com/c/icodeartdeveloper           ****
-** GITHUB: https://github.com/icodeart                            ****
-** TELEGRAM: https://telegram.me/icodeart                         ****
-** EMAIL: info@icodeart.com                                       ****
-**                                                                ****
-**********************************************************************
-**********************************************************************
-**/
-
 // Incluimos nuestro archivo config
-include 'config.php'; 
+include 'config.php';
 
 // Sentencia sql para traer los eventos desde la base de datos
-$sql="SELECT * FROM eventos"; 
+$sql="SELECT * FROM eventos";
 
 // Verificamos si existe un dato
 if ($conexion->query($sql)->num_rows)
-{ 
+{
 
     // creamos un array
-    $datos = array(); 
+    $datos = array();
 
     //guardamos en un array multidimensional todos los datos de la consulta
-    $i=0; 
+    $i=0;
 
     // Ejecutamos nuestra sentencia sql
-    $e = $conexion->query($sql); 
+    $e = $conexion->query($sql);
 
     while($row=$e->fetch_array()) // realizamos un ciclo while para traer los eventos encontrados en la base de dato
     {
         // Alimentamos el array con los datos de los eventos
-        $datos[$i] = $row; 
+        $datos[$i] = $row;
         $i++;
     }
 
@@ -57,7 +38,7 @@ if ($conexion->query($sql)->num_rows)
     else
     {
         // Si no existen eventos mostramos este mensaje.
-        echo "No hay datos"; 
+        echo "No hay datos";
     }
 
 

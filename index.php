@@ -1,24 +1,5 @@
 <?php
 
-/**
-**
-**  BY iCODEART
-**
-**********************************************************************
-**                      REDES SOCIALES                            ****
-**********************************************************************
-**                                                                ****
-** FACEBOOK: https://www.facebook.com/icodeart                    ****
-** TWIITER: https://twitter.com/icodeart                          ****
-** YOUTUBE: https://www.youtube.com/c/icodeartdeveloper           ****
-** GITHUB: https://github.com/icodeart                            ****
-** TELEGRAM: https://telegram.me/icodeart                         ****
-** EMAIL: info@icodeart.com                                       ****
-**                                                                ****
-**********************************************************************
-**********************************************************************
-**/
-
 // Definimos nuestra zona horaria
 date_default_timezone_set("America/Santiago");
 
@@ -29,11 +10,11 @@ include 'funciones.php';
 include 'config.php';
 
 // Verificamos si se ha enviado el campo con name from
-if (isset($_POST['from'])) 
+if (isset($_POST['from']))
 {
 
     // Si se ha enviado verificamos que no vengan vacios
-    if ($_POST['from']!="" AND $_POST['to']!="") 
+    if ($_POST['from']!="" AND $_POST['to']!="")
     {
 
         // Recibimos el fecha de inicio y la fecha final desde el form
@@ -63,11 +44,11 @@ if (isset($_POST['from']))
         $query="INSERT INTO eventos VALUES(null,'$titulo','$body','','$clase','$inicio','$final','$inicio_normal','$final_normal')";
 
         // Ejecutamos nuestra sentencia sql
-        $conexion->query($query); 
+        $conexion->query($query);
 
         // Obtenemos el ultimo id insetado
         $im=$conexion->query("SELECT MAX(id) AS id FROM eventos");
-        $row = $im->fetch_row();  
+        $row = $im->fetch_row();
         $id = trim($row[0]);
 
         // para generar el link del evento
@@ -77,10 +58,10 @@ if (isset($_POST['from']))
         $query="UPDATE eventos SET url = '$link' WHERE id = $id";
 
         // Ejecutamos nuestra sentencia sql
-        $conexion->query($query); 
+        $conexion->query($query);
 
         // redireccionamos a nuestro calendario
-        header("Location:$base_url"); 
+        header("Location:$base_url");
     }
 }
 
@@ -164,40 +145,40 @@ if (isset($_POST['from']))
                 var options = {
 
                     // definimos que los eventos se mostraran en ventana modal
-                        modal: '#events-modal', 
+                        modal: '#events-modal',
 
                         // dentro de un iframe
-                        modal_type:'iframe',    
+                        modal_type:'iframe',
 
                         //obtenemos los eventos de la base de datos
-                        events_source: '<?=$base_url?>obtener_eventos.php', 
+                        events_source: '<?=$base_url?>obtener_eventos.php',
 
                         // mostramos el calendario en el mes
-                        view: 'month',             
+                        view: 'month',
 
                         // y dia actual
-                        day: yyyy+"-"+mm+"-"+dd,   
+                        day: yyyy+"-"+mm+"-"+dd,
 
 
                         // definimos el idioma por defecto
-                        language: 'es-ES', 
+                        language: 'es-ES',
 
                         //Template de nuestro calendario
-                        tmpl_path: '<?=$base_url?>tmpls/', 
+                        tmpl_path: '<?=$base_url?>tmpls/',
                         tmpl_cache: false,
 
 
                         // Hora de inicio
-                        time_start: '08:00', 
+                        time_start: '08:00',
 
                         // y Hora final de cada dia
-                        time_end: '22:00',   
+                        time_end: '22:00',
 
                         // intervalo de tiempo entre las hora, en este caso son 30 minutos
-                        time_split: '30',    
+                        time_split: '30',
 
                         // Definimos un ancho del 100% a nuestro calendario
-                        width: '100%', 
+                        width: '100%',
 
                         onAfterEventsLoad: function(events)
                         {
@@ -230,7 +211,7 @@ if (isset($_POST['from']))
 
 
                 // id del div donde se mostrara el calendario
-                var calendar = $('#calendar').calendar(options); 
+                var calendar = $('#calendar').calendar(options);
 
                 $('.btn-group button[data-calendar-nav]').each(function()
                 {

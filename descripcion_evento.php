@@ -1,26 +1,7 @@
 <?php
 
-/**
-**
-**  BY iCODEART
-**
-**********************************************************************
-**                      REDES SOCIALES                            ****
-**********************************************************************
-**                                                                ****
-** FACEBOOK: https://www.facebook.com/icodeart                    ****
-** TWIITER: https://twitter.com/icodeart                          ****
-** YOUTUBE: https://www.youtube.com/c/icodeartdeveloper           ****
-** GITHUB: https://github.com/icodeart                            ****
-** TELEGRAM: https://telegram.me/icodeart                         ****
-** EMAIL: info@icodeart.com                                       ****
-**                                                                ****
-**********************************************************************
-**********************************************************************
-**/
-    
     //incluimos nuestro archivo config
-    include 'config.php'; 
+    include 'config.php';
 
     // Incluimos nuestro archivo de funciones
     include 'funciones.php';
@@ -34,7 +15,7 @@
     // Obtenemos los datos
     $row = $bd->fetch_assoc();
 
-    // titulo 
+    // titulo
     $titulo=$row['title'];
 
     // cuerpo
@@ -47,11 +28,11 @@
     $final=$row['final_normal'];
 
 // Eliminar evento
-if (isset($_POST['eliminar_evento'])) 
+if (isset($_POST['eliminar_evento']))
 {
     $id  = evaluar($_GET['id']);
     $sql = "DELETE FROM eventos WHERE id = $id";
-    if ($conexion->query($sql)) 
+    if ($conexion->query($sql))
     {
         echo "Evento eliminado";
     }
